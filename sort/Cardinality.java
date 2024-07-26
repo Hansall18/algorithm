@@ -2,6 +2,9 @@ package sort;
 
 import java.util.Arrays;
 
+/**
+ * 基数排序！
+ */
 public class Cardinality {
     public static void main(String[] args) {
         int[] arr = {421,240,115,532,305,430,324};
