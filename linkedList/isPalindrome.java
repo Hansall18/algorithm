@@ -10,12 +10,10 @@ public class isPalindrome {
     public boolean isPalindrome(ListNode head) {
         Stack<ListNode> stack = new Stack<>();
         ListNode cur = head;
-
         while (cur != null){
             stack.push(cur);
             cur = cur.next;
         }
-
         while (head != null){
             ListNode n = stack.pop();
             if (n.val != head.val){
