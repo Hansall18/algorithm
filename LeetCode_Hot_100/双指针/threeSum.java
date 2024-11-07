@@ -21,57 +21,43 @@ import java.util.List;
  */
 public class threeSum {
     public static List<List<Integer>> threeSum(int[] nums) {
-        // 存放结果的listList
-        List<List<Integer>> listList = new ArrayList<>();
-        // 对数组排序
-        Arrays.sort(nums);
+        List<List<Integer>> listList = new ArrayList<>();                   // 存放结果的listList
+        Arrays.sort(nums);                                                  // 对数组排序
         int N = nums.length;
         int i = 0;
-        // 遍历nums
-        while (i < nums.length) {
-            if (nums[i] > 0) {
-                // 只有nums[i]小于零才有后续，否则说明不可能再有i之后的两个数同i相加等于零（因为对nums排序了！）
-                // 所以直接返回结果
+        while (i < nums.length) {                                           // 遍历nums
+            if (nums[i] > 0) {                                              // 只有nums[i]小于零才有后续，否则说明不可能再有i之后的两个数同i相加等于零（因为对nums排序了！）
                 return listList;
             }
             if (i > 0 && nums[i - 1] == nums[i]) {
-                // nums[i] == nums[i-1]，跳过i,避免重复
-                i++;
+                i++;                                                        // nums[i] == nums[i-1]，跳过i,避免重复
                 continue;
             }
-            // 每一次num[i]循环，L为i+1，R为N-1
-            int L = i + 1;
+            int L = i + 1;                                                  // 每一次num[i]循环，L为i+1，R为N-1
             int R = N - 1;
             while (L < R) {
-                // 此刻三者之和为temp
-                int temp = nums[i] + nums[L] + nums[R];
-                if (temp == 0) {
-                    // temp等于0满足要求，将结果保存
+                int temp = nums[i] + nums[L] + nums[R];                     // 此刻三者之和为temp
+                if (temp == 0) {                                            // temp等于0满足要求，将结果保存
                     List<Integer> list = new ArrayList<>();
                     list.add(nums[i]);
                     list.add(nums[L]);
                     list.add(nums[R]);
                     listList.add(list);
-                    // 在此次nums[i]循环中，避免重复的L和R
                     while (L < R && nums[L + 1] == nums[L]) {
-                        L++;
+                        L++;                                                // 在此次nums[i]循环中，避免重复的L和R
                     }
                     while (L < R && nums[R - 1] == nums[R]) {
-                        R--;
+                        R--;                                                // 在此次nums[i]循环中，避免重复的L和R
                     }
-                    // 当L和R的各自下一个都不重复后，各自迭代
-                    L++;
-                    R--;
+                    L++;                                                    // 当L和R的各自下一个都不重复后，各自迭代
+                    R--;                                                    // 当L和R的各自下一个都不重复后，各自迭代
                 } else if (temp > 0) {
-                    // temp小于零，说明R大了
-                    R--;
+                    R--;                                                    // temp小于零，说明R大了
                 } else {
-                    // 否则说L小了
-                    L++;
+                    L++;                                                    // 否则说L小了
                 }
             }
-            // 迭代i
-            i++;
+            i++;                                                            // 迭代i
         }
         return listList;
     }

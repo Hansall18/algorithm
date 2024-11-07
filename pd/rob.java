@@ -40,8 +40,6 @@ public class rob {
         return process2(nums,0,dp);
     }
 
-
-
     // 动态规划
     public int rob3(int[] nums){
         int N = nums.length;
